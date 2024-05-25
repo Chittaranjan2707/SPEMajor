@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_IMAGE = 'nikhilguptaiiitb/frontend-app'
-        BACKEND_IMAGE = 'nikhilguptaiiitb/backend-app'
+        FRONTEND_IMAGE = 'chittaranjan27/frontend-app'
+        BACKEND_IMAGE = 'chittaranjan27/backend-app'
     }
 
     tools {
@@ -20,7 +20,7 @@ pipeline {
                     doGenerateSubmoduleConfigurations: false,
                     extensions: [],
                     submoduleCfg: [],
-                    userRemoteConfigs: [[url: 'https://github.com/Chittaranjan2707/SPEBlogApp.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/Chittaranjan2707/SPEMajor.git']]
                 ])
             }
         }
@@ -56,7 +56,7 @@ pipeline {
         stage('Push Docker Images to DockerHub') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'DockerhubCred') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHubCred') {
                         docker.image("${FRONTEND_IMAGE}").push('latest')
                         docker.image("${BACKEND_IMAGE}").push('latest')
                     }
