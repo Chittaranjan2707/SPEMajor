@@ -6,11 +6,6 @@ pipeline {
         BACKEND_IMAGE = 'chittaranjan27/backend-app'
     }
 
-    tools {
-        ansible 'Ansible' // Ansible tool configured in Jenkins
-        maven 'Maven3'    // Maven3 tool configured in Jenkins
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
