@@ -61,7 +61,7 @@ pipeline {
 
         stage('Deploy with Ansible') {
             steps {
-                withCredentials([string(credentialsId: 'SUDO_PASS', variable: 'SUDO_PASS')]) {
+                withCredentials([string(credentialsId: 'ansible_become_pass', variable: 'SUDO_PASS')]) {
                     ansiblePlaybook(
                         playbook: 'deploy.yml',
                         inventory: 'hosts.ini',
